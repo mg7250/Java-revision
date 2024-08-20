@@ -1,0 +1,27 @@
+class Solution {
+    static ArrayList<Integer> increment(ArrayList<Integer> arr , int N) {
+        // code here
+        ArrayList<Integer> result=new ArrayList<>();
+        if(arr.get(N-1)<9)
+        arr.set(N-1,arr.get(N-1)+1);
+        else{
+            for(int i=N-1;i>=0;i--){
+                int num=arr.get(i);
+                if(num==9){
+                arr.set(i,0);}
+                else {
+                  arr.set(i,num+1);
+                  break;
+                }
+            }
+        }
+        if(arr.get(0)==0){
+            result.add(1);
+            for(int i=1;i<=N;i++)
+            result.add(0);
+            return result;
+        }
+        
+        return arr;
+    }
+};
