@@ -1,0 +1,34 @@
+class Result {
+     static void swape(List<Integer> arr,int num1,int num2){
+         int tem=arr.get(num1);
+         arr.set(num1, arr.get(num2));
+         arr.set(num2, tem);
+         
+     }
+      static void quickSortRecursive(List<Integer> arr, int low, int high) {
+        if (low < high) {
+            int pi = partition(arr, low, high);
+            quickSortRecursive(arr, low, pi - 1);
+            quickSortRecursive(arr, pi + 1, high);
+        }
+      }
+      static int partition(List<Integer> arr,int low,int high){
+        int pivot= low;
+        while(low<high){
+            while(arr.get(low)<=arr.get(pivot) && low<high) low++;
+            while(arr.get(high)>arr.get(pivot)) high--;
+            if(low<high){
+                swape(arr, low, high);
+            }
+            
+        }
+        swape(arr,high,pivot);
+        return high;
+        }
+    public static List<Integer> quickSort(List<Integer> arr) {
+        quickSortRecursive(arr,0,arr.size()-1);
+        return arr;
+        
+    }
+
+}
