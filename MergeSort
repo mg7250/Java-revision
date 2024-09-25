@@ -1,0 +1,56 @@
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        int[] arr=new int[5];
+        for(int i=0;i<arr.length;i++){
+            arr[i]=sc.nextInt();
+        }
+        sc.close();
+        MergeSort(arr,0,arr.length-1);
+        for(int ele: arr){
+            System.out.println(ele);
+        }
+    }
+    static void MergeSort(int[] arr, int l, int h){
+        if(l<h){
+            int mid=(l+h)/2;
+            MergeSort(arr,l,mid);
+            MergeSort(arr,mid+1,h);
+            Merge(arr,l,mid,h);
+        }
+    }
+    static void Merge(int[] arr, int l, int mid, int h){
+        int[] a=new int[mid-l+1];
+        int[] b=new int[h-mid];
+        int k=l;
+        for(int i=0;i<a.length;i++){
+           a[i] =arr[l+i];
+        }
+        for(int i=0;i<b.length;i++){
+           b[i] =arr[mid+1+i];
+        }
+        int i=0;
+        int j=0;
+        while(i< a.length && j< b.length){
+            if(a[i]<b[j]){
+                arr[k]=a[i];
+            i++;
+            }
+            else {
+                arr[k]=a[j];
+                j++;
+            }
+            k++;
+        }
+        while(i<a.length){
+            arr[k]=a[i];
+            i++;
+            k++;
+        }
+        while(j<b.length){
+            arr[k]=b[j];
+            j++;
+            k++;
+        }
+    }
+}
