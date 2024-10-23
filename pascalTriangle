@@ -1,0 +1,44 @@
+/*package whatever //do not write package name here */
+
+import java.io.*;
+import java.util.*;
+
+class GFG {
+	public static void main (String[] args) {
+		System.out.println("Enter the number of the line ");
+		Scanner sc=new Scanner(System.in);
+		int line=sc.nextInt();
+		pascal(line);
+	}
+	static int fact(int num){
+	    int f=1;
+	    for(int i=1;i<=num;i++){
+	        f*=i;
+	    }
+	    return f;
+	}
+	static int combi(int n, int r){
+	    int com=fact(n)/(fact(r)*fact(n-r));
+	    return com;
+	}
+	static void pascal(int line){
+	    
+	    for(int i=1;i<=line;i++){
+	        int k=1;
+	        int r=0;
+	        for(int j=1;j<line*2;j++){
+	            if(j>=line-i+1 && j<=line+i-1 && k==1){
+	                System.out.print(combi(i-1,r));
+	                k=0;
+	                r++;
+	            }
+	            else{
+	                System.out.print(" ");
+	                k=1;
+	            }
+	            
+	        }
+	        System.out.print("\n");
+	    }
+	}
+}
